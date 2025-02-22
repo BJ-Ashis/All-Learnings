@@ -1,0 +1,53 @@
+Java Commands (Spring Boot Application)
+java -jar E:\Web Devlopment\05 Docker\a01-springboot_with_docker\target\rest-demo.jar
+
+Runs the Spring Boot application (rest-demo.jar) from the specified absolute path.
+java -jar target\rest-demo.jar
+
+Runs the Spring Boot application from the target directory in the current working directory.
+java -jar rest-demo.jar
+
+Runs the Spring Boot application, assuming the .jar file is in the current directory.
+cd target
+
+Changes the directory to target, typically where the .jar file is generated after building the application.
+java -jar rest-demo.jar
+
+Runs the Spring Boot application after navigating to the target directory.
+java -Dserver.port=8081 -jar rest-demo.jar
+
+Runs the Spring Boot application, overriding the default server port to 8081.
+Docker Commands
+docker ps
+
+Lists all running Docker containers, showing their ID, image, command, status, and ports.
+docker exec quizzical_darwin ls -a
+
+Executes ls -a inside the quizzical_darwin container, listing all files (including hidden ones).
+docker exec quizzical_darwin ls /tmp
+
+Lists files inside the /tmp directory of the quizzical_darwin container.
+docker exec quizzical_darwin ls tmp
+
+Lists files inside the tmp directory of the quizzical_darwin container (without the leading slash).
+docker cp rest-demo.jar quizzical_darwin:/tmp
+
+Copies the rest-demo.jar file from the local machine to the /tmp directory inside the quizzical_darwin container.
+docker exec quizzical_darwin ls tmp
+
+Lists files inside the tmp directory in the quizzical_darwin container after copying rest-demo.jar there.
+docker commit quizzical_darwin telusko/rest-demo:v1
+
+Creates a new Docker image (telusko/rest-demo:v1) from the running quizzical_darwin container, capturing the current state, including copied files.
+docker run telusko/rest-demo:v1
+
+Runs a container from the telusko/rest-demo:v1 image, starting the app inside the container.
+docker commit --change='CMD ["java","-jar","/tmp/rest-demo.jar"]' quizzical_darwin telusko/rest-demo:v2
+
+Creates a new Docker image (telusko/rest-demo:v2) from the quizzical_darwin container, with an added CMD to run rest-demo.jar automatically on container start.
+docker run telusko/rest-demo:v2
+
+Runs a container from the telusko/rest-demo:v2 image, which automatically starts the app inside the container.
+docker run -p 8080:8081 telusko/rest-demo:v2
+
+Runs the container from telusko/rest-demo:v2, mapping port 8081 in the container to port 8080 on the host. This allows you to access the app at http://localhost:8080.

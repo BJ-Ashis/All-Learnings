@@ -1,0 +1,29 @@
+To Run Using Docker
+
+///////////////////////////////////
+First Step:-
+<build>
+	<finalName>rest-demo</finalName> //ADD A FILENAME IN THE POM.XML BUILD SECTION
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+/////////////////////////////////////
+Second Step:-Check mvn -version if present countinue
+
+//////////////////////////////////////////////////
+
+third step:-
+run mvn package to create a jar file 
+
+//////////////////////////
+
+fourth step:-
+run java -jar filename.jar to run 
+
+/////////////////////////
+fifth step:-
+if you want to change port then run java -Dserver.port=8081 -jar rest-demo.jar
